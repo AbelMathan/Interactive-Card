@@ -10,8 +10,8 @@ const UserForm = ({
   return (
     <div className="w-full lg:w-auto relative bottom-24 lg:bottom-0 ">
       {/* <h1>Interactive Card Details</h1> */}
-      <form onSubmit={handleSubmit} className="flex flex-col">
-        <label className="cnumber ">card number</label>
+      <form onSubmit={handleSubmit} className="flex flex-col ">
+        <label className="cnumber font-semibold">Card number</label>
         <input
           type="number"
           className="number lg:w-80 rounded-lg px-5 border-black border-[1px] drop-shadow-md"
@@ -22,7 +22,7 @@ const UserForm = ({
           onChange={handleChange}
           value={number.slice(0, 16)}
         />
-        <label className="cname">CardHolder name</label>
+        <label className="cname font-semibold">CardHolder name</label>
         <input
           type="text"
           className="name lg:w-80 rounded-lg px-5 border-black border-[1px] drop-shadow-md"
@@ -33,8 +33,8 @@ const UserForm = ({
           value={name}
         />
         <article className="w-full lg:w-80 grid grid-cols-2 gap-2 ">
-          <label className="edate ">Exp.date(MM//YY)</label>
-          <label className="cvc ml-20 ">CVC</label>
+          <label className="edate font-semibold ">Exp.date(MM//YY)</label>
+          <label className="cvc ml-20 font-semibold ">CVC</label>
         </article>
         <article className="w-full lg:w-80 grid grid-cols-3 gap-2  ">
           <input
