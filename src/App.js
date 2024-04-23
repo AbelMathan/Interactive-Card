@@ -1,11 +1,10 @@
 import "./App.css";
 import { useState } from "react";
-import Bg from "./components/assets/bg-main-desktop.png";
 import UserForm from "./components/pages/UserForm";
 import CardFront from "./components/pages/CardFront";
 import CardBack from "./components/pages/CardBack";
-import CardDetails from "./components/pages/CardDetails";
 import Thankyou from "./components/pages/Thankyou";
+import Background from "./components/pages/Background";
 
 function App() {
   const [isComplete, setIsComplete] = useState(true);
@@ -38,38 +37,37 @@ function App() {
       cvc: "",
     });
   };
-
+  // -top-48 sm:-top-[700px] lg:top-0
   return (
-    <main className="bg-gray-100 w-[400px] md:w-auto">
-      <div className="App w-[400px] h-[777px] overflow-hidden  md:h-[737px] ">
-        <img
-          className="relative top-0 h-80 w-[500px] md:absolute md:h-[737px] md:w-[500px]"
-          src={Bg}
-          alt="Background"
-        />
-        <CardBack />
-        <CardFront />
-        <CardDetails
-          name={values.name}
-          number={values.number}
-          month={values.month}
-          year={values.year}
-          cvc={values.cvc}
-        />
-        {isComplete ? (
-          <UserForm
+    <main className="bg-gray-100 w-full h-screen overflow-hidden ">
+      <Background />
+      <section className="w-full h-screen absolute top-0 lg:flex flex-row justify-center justify-items-center items-center p-5 lg:gap-32 ">
+        <div className=" w-full lg:w-auto p-5 flex flex-col-reverse  lg:flex-col">
+          <CardFront
             name={values.name}
             number={values.number}
             month={values.month}
             year={values.year}
-            cvc={values.cvc}
-            handleChange={handleChange}
-            handleSubmit={handleSubmit}
           />
-        ) : (
-          <Thankyou handleSubmit={handleSubmit} />
-        )}
-      </div>
+          <CardBack cvc={values.cvc} />
+        </div>
+
+        <div className="w-full lg:w-auto px-5">
+          {isComplete ? (
+            <UserForm
+              name={values.name}
+              number={values.number}
+              month={values.month}
+              year={values.year}
+              cvc={values.cvc}
+              handleChange={handleChange}
+              handleSubmit={handleSubmit}
+            />
+          ) : (
+            <Thankyou handleSubmit={handleSubmit} />
+          )}
+        </div>
+      </section>
     </main>
   );
 }
